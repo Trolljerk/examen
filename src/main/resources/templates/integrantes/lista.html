@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Integrantes del Semillero</title>
+  </head>
+  <body>
+    <h1>Integrantes del Semillero</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+      <tr th:each="integrante : ${integrantes}">
+        <td th:text="${integrante.id}"></td>
+        <td th:text="${integrante.nombre}"></td>
+        <td th:text="${integrante.apellido}"></td>
+        <td th:text="${integrante.rol.nombre}"></td>
+        <td>
+          <a th:href="@{/integrantes/{id}/editar(id=${integrante.id})}"
+            >Editar</a
+          >
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!-- modalidades/detalle.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Detalle de Modalidad</title>
+  </head>
+  <body>
+    <h1>Detalle de Modalidad</h1>
+    <p>ID: <span th:text="${modalidad.id}"></span></p>
+    <p>Nombre: <span th:text="${modalidad.nombre}"></span></p>
+    <a th:href="@{/modalidades/{id}/editar(id=${modalidad.id})}">Editar</a>
+    <form
+      th:action="@{/modalidades/{id}/eliminar(id=${modalidad.id})}"
+      method="post"
+      style="display: inline"
+    >
+      <button
+        type="submit"
+        onclick="return confirm('¿Estás seguro de que quieres eliminar esta modalidad?')"
+      >
+        Eliminar
+      </button>
+    </form>
+    <a th:href="@{/modalidades}">Volver a la lista</a>
+  </body>
+</html>

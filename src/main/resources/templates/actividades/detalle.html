@@ -1,0 +1,20 @@
+<!-- actividades/detalle.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Detalle de Actividad</title>
+  </head>
+  <body>
+    <h1>Detalle de Actividad</h1>
+    <p>ID: <span th:text="${actividad.id}"></span></p>
+    <p>Nombre: <span th:text="${actividad.nombre}"></span></p>
+    <p>Descripción: <span th:text="${actividad.descripcion}"></span></p>
+    <p>Proyecto: <span th:text="${actividad.proyecto.nombre}"></span></p>
+    <p>
+      Responsable:
+      <span
+        th:text="${actividad.responsable.nombre + ' ' + actividad.responsable.apellido}"
+      ></span>
+    </p>
+  </body>
+</html>

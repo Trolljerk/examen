@@ -1,0 +1,40 @@
+<!-- integrantes/formulario.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Editar Integrante</title>
+  </head>
+  <body>
+    <h1>Editar Integrante</h1>
+    <form
+      th:action="@{/integrantes/{id}(id=${integrante.id})}"
+      th:object="${integrante}"
+      method="post"
+    >
+      <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br />
+      <label>Apellido: <input type="text" th:field="*{apellido}" /></label
+      ><br />
+      <label
+        >Semillero:
+        <select th:field="*{semillero}">
+          <option
+            th:each="semillero : ${semilleros}"
+            th:value="${semillero.id}"
+            th:text="${semillero.nombre}"
+          ></option>
+        </select> </label
+      ><br />
+      <label
+        >Rol:
+        <select th:field="*{rol}">
+          <option
+            th:each="rol : ${roles}"
+            th:value="${rol.id}"
+            th:text="${rol.nombre}"
+          ></option>
+        </select> </label
+      ><br />
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

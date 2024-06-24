@@ -1,0 +1,25 @@
+<!-- eventos/formulario.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Crear Evento</title>
+  </head>
+  <body>
+    <h1>Crear Evento</h1>
+    <form th:action="@{/eventos}" th:object="${evento}" method="post">
+      <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br />
+      <label>Fecha: <input type="date" th:field="*{fecha}" /></label><br />
+      <label
+        >Nivel:
+        <select th:field="*{nivel}">
+          <option
+            th:each="nivel : ${niveles}"
+            th:value="${nivel.id}"
+            th:text="${nivel.nombre}"
+          ></option>
+        </select> </label
+      ><br />
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!-- modalidades/formulario.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title
+      th:text="${modalidad.id} ? 'Editar Modalidad' : 'Crear Modalidad'"
+    ></title>
+  </head>
+  <body>
+    <h1 th:text="${modalidad.id} ? 'Editar Modalidad' : 'Crear Modalidad'"></h1>
+    <form
+      th:action="${modalidad.id} ? @{/modalidades/{id}(id=${modalidad.id})} : @{/modalidades}"
+      th:object="${modalidad}"
+      method="post"
+    >
+      <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br />
+      <button type="submit">Guardar</button>
+    </form>
+    <a th:href="@{/modalidades}">Cancelar</a>
+  </body>
+</html>

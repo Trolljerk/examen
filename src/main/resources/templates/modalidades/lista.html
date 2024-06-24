@@ -1,0 +1,40 @@
+<!-- modalidades/lista.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Lista de Modalidades</title>
+  </head>
+  <body>
+    <h1>Lista de Modalidades</h1>
+    <a th:href="@{/modalidades/nuevo}">Crear nueva modalidad</a>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+      <tr th:each="modalidad : ${modalidades}">
+        <td th:text="${modalidad.id}"></td>
+        <td th:text="${modalidad.nombre}"></td>
+        <td>
+          <a th:href="@{/modalidades/{id}(id=${modalidad.id})}">Ver</a>
+          <a th:href="@{/modalidades/{id}/editar(id=${modalidad.id})}"
+            >Editar</a
+          >
+          <form
+            th:action="@{/modalidades/{id}/eliminar(id=${modalidad.id})}"
+            method="post"
+            style="display: inline"
+          >
+            <button
+              type="submit"
+              onclick="return confirm('¿Estás seguro de que quieres eliminar esta modalidad?')"
+            >
+              Eliminar
+            </button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
