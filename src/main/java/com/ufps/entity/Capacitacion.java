@@ -1,30 +1,30 @@
 package com.ufps.entity;
 
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-@Entity
 @Data
-public class Linea {
-
+@Entity
+public class Capacitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nombre;
-    private String descripcion;
-    private char estado;
-
-    @OneToMany(mappedBy = "linea")
-    private List<Proyecto> proyectos;
+    private Date fecha;
 
     @ManyToOne
     private Semillero semillero;
 
+    @ManyToMany
+    private List<Integrante> asistentes;
+
+    // Getters y setters
 }

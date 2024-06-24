@@ -6,25 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-@Entity
 @Data
-public class Linea {
-
+@Entity
+public class NivelFormacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nombre;
-    private String descripcion;
-    private char estado;
 
-    @OneToMany(mappedBy = "linea")
-    private List<Proyecto> proyectos;
-
-    @ManyToOne
-    private Semillero semillero;
-
+    @OneToMany(mappedBy = "nivelFormacion")
+    private List<Director> director;
 }

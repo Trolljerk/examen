@@ -12,19 +12,20 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Linea {
-
+public class Semillero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nombre;
-    private String descripcion;
-    private char estado;
-
-    @OneToMany(mappedBy = "linea")
-    private List<Proyecto> proyectos;
 
     @ManyToOne
-    private Semillero semillero;
+    private Director director;
 
+    @OneToMany(mappedBy = "semillero")
+    private List<Integrante> integrantes;
+
+    @OneToMany(mappedBy = "semillero")
+    private List<Capacitacion> capacitaciones;
+
+    // Getters y setters
 }
